@@ -30,7 +30,7 @@
   border-radius: var(--border-radius);
   color: var(--text-color-primary);
   font-size: var(--font-size-md);
-  margin-bottom: 15px;
+  //margin-bottom: 15px;
   padding: var(--padding-primary);
   width: var(--element-default-width);
   max-width: var(--element-max-width-sm);
@@ -44,7 +44,7 @@
   border-radius: var(--border-radius);
   cursor: pointer;
   width: var(--element-default-width);
-  max-width: var(--element-max-width-sm);
+  //max-width: var(--element-max-width-sm);
 }
 
 .login_button:disabled {

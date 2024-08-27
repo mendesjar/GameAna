@@ -19,14 +19,36 @@
         <img src="./images/brain.png" alt="Brain Icon" />
         <h1>Jogo da memória pra Ana Claudinha</h1>
       </div>
-
-      <input
-        spellcheck="false"
-        type="text"
-        placeholder="Seu Nick, Amor..."
-        class="login_input"
-      />
-      <button type="submit" class="login_button" disabled>Jogar</button>
+      <div>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            column-gap: 6px;
+          "
+        >
+          <input
+            spellcheck="false"
+            type="text"
+            placeholder="Seu Nick, Amor..."
+            class="login_input"
+          />
+          <div>
+            <form>
+              <fieldset id="version">
+                <div style="display: flex; column-gap: 6px">
+                  <input type="radio" name="version" value="V1" />V1
+                </div>
+                <div style="display: flex; column-gap: 6px">
+                  <input type="radio" name="version" value="V2" />V2
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <button type="submit" class="login_button" disabled>Jogar</button>
+      </div>
     </form>
   </body>
 </html>

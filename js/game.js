@@ -4,117 +4,128 @@ const timer = document.querySelector(".timer");
 const modal = document.querySelector(".modal_win_container");
 const closeModal = document.querySelector(".modal_win_container span");
 const textModal = document.querySelector(".modal_win_container .modal p");
-const pathToOurPhotos = "../images";
+const version = localStorage.getItem("version");
+
+const pathToOurPhotosVersion = `../images/${version}`;
+
+document.querySelector(
+  "main"
+).style.backgroundImage = `url(../images/${version}/foto_background.png)`;
 
 const ourPhotos = [];
 
 for (let i = 1; i <= 10; i++) {
-	ourPhotos.push(`foto_${i}.jpeg`);
+  ourPhotos.push(`foto_${i}.jpeg`);
 }
 
 const createElement = (tag, className) => {
-	const el = document.createElement(tag);
-	el.className = className;
+  const el = document.createElement(tag);
+  el.className = className;
 
-	return el;
+  return el;
 };
 
 let firstCard = "";
 let secondCard = "";
 
 const checkEndGame = () => {
-	const disabledCards = document.querySelectorAll(".disabled-card");
+  const disabledCards = document.querySelectorAll(".disabled-card");
 
-	if (disabledCards.length >= ourPhotos.length * 2) {
-		clearInterval(this.timer);
-		textModal.innerHTML = `Parabéns, Amor! Você Ganhou! Seu tempo foi de ${timer.innerHTML}s!`;
-		modal.classList.add("show");
-	}
+  if (disabledCards.length >= ourPhotos.length * 2) {
+    clearInterval(this.timer);
+    textModal.innerHTML = `Parabéns, Amor! Você Ganhou! Seu tempo foi de ${timer.innerHTML}s!`;
+    modal.classList.add("show");
+  }
 };
 
 closeModal.addEventListener("click", () => modal.classList.remove("show"));
 
 const checkCards = () => {
-	const firstPhoto = firstCard.dataset.photo;
-	const secondPhoto = secondCard.dataset.photo;
+  const firstPhoto = firstCard.dataset.photo;
+  const secondPhoto = secondCard.dataset.photo;
 
-	if (firstPhoto === secondPhoto) {
-		setTimeout(() => {
-			firstCard.firstChild.classList.add("disabled-card");
-			secondCard.firstChild.classList.add("disabled-card");
+  if (firstPhoto === secondPhoto) {
+    setTimeout(() => {
+      firstCard.firstChild.classList.add("disabled-card");
+      secondCard.firstChild.classList.add("disabled-card");
 
-			firstCard = "";
-			secondCard = "";
+      firstCard = "";
+      secondCard = "";
 
-			checkEndGame();
-		}, 800);
-	} else {
-		setTimeout(() => {
-			firstCard.classList.remove("reveal-card");
-			secondCard.classList.remove("reveal-card");
+      checkEndGame();
+    }, 800);
+  } else {
+    setTimeout(() => {
+      firstCard.classList.remove("reveal-card");
+      secondCard.classList.remove("reveal-card");
 
-			firstCard = "";
-			secondCard = "";
-		}, 800);
-	}
+      firstCard = "";
+      secondCard = "";
+    }, 800);
+  }
 };
 
 const revealCard = ({ target }) => {
-	if (target.parentNode.className.includes("reveal-card")) return;
+  if (target.parentNode.className.includes("reveal-card")) return;
 
-	if (firstCard === "") {
-		target.parentNode.classList.add("reveal-card");
-		firstCard = target.parentNode;
-	} else if (secondCard === "") {
-		target.parentNode.classList.add("reveal-card");
-		secondCard = target.parentNode;
+  if (firstCard === "") {
+    target.parentNode.classList.add("reveal-card");
+    firstCard = target.parentNode;
+  } else if (secondCard === "") {
+    target.parentNode.classList.add("reveal-card");
+    secondCard = target.parentNode;
 
-		checkCards();
-	}
+    checkCards();
+  }
 };
 
-const createCard = photo => {
-	const card = createElement("div", "card");
-	const front = createElement("div", "face front");
-	const back = createElement("div", "face back");
+const createCard = (photo) => {
+  const card = createElement("div", "card");
+  const front = createElement("div", "face front");
+  const back = createElement("div", "face back");
 
-	front.style.backgroundImage = `url(${pathToOurPhotos}/${photo})`;
+  front.style.backgroundImage = `url(${pathToOurPhotosVersion}/${photo})`;
 
-	card.appendChild(front);
-	card.appendChild(back);
+  card.appendChild(front);
+  card.appendChild(back);
 
-	card.addEventListener("click", revealCard);
-	card.setAttribute("data-photo", photo);
+  card.addEventListener("click", revealCard);
+  card.setAttribute("data-photo", photo);
 
-	return card;
+  return card;
 };
 
 const loadGame = () => {
-	const duplicatedPhotos = [...ourPhotos, ...ourPhotos];
+  const duplicatedPhotos = [...ourPhotos, ...ourPhotos];
 
-	const shuffledPhotos = duplicatedPhotos.sort(() => Math.random() - 0.5);
+  const shuffledPhotos = duplicatedPhotos.sort(() => Math.random() - 0.5);
 
-	shuffledPhotos.forEach(photo => {
-		const card = createCard(photo);
+  shuffledPhotos.forEach((photo) => {
+    const card = createCard(photo);
 
-		grid.appendChild(card);
-	});
+    grid.appendChild(card);
+  });
+
+  Array.from(document.querySelectorAll(".back")).map(
+    (card) =>
+      (card.style.backgroundImage = `url(../images/${version}/foto_base.jpeg)`)
+  );
 };
 
 const startTimer = () => {
-	this.timer = setInterval(() => {
-		const currentTimer = +timer.innerHTML;
+  this.timer = setInterval(() => {
+    const currentTimer = +timer.innerHTML;
 
-		timer.innerHTML = String(currentTimer + 1).padStart(2, "0");
-	}, 1000);
+    timer.innerHTML = String(currentTimer + 1).padStart(2, "0");
+  }, 1000);
 };
 
 window.onload = () => {
-	if (localStorage.getItem("nick_moamor")) {
-		nickMoamor.innerHTML = localStorage.getItem("nick_moamor");
-		loadGame();
-		startTimer();
-	} else {
-		window.location = "../index.html";
-	}
+  if (localStorage.getItem("nick_moamor")) {
+    nickMoamor.innerHTML = localStorage.getItem("nick_moamor");
+    loadGame();
+    startTimer();
+  } else {
+    window.location = "../index.html";
+  }
 };
