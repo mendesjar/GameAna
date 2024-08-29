@@ -9,7 +9,7 @@ const handleSubmitForm = (e) => {
   const ver = [...version.elements].filter((input) => input.checked)[0];
 
   localStorage.setItem("nick_moamor", input.value);
-  localStorage.setItem("version", ver?.value || "v1");
+  localStorage.setItem("version", ver?.value || "V1");
 
   window.location = "pages/game.html";
 };
