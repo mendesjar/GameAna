@@ -6,16 +6,16 @@ const closeModal = document.querySelector(".modal_win_container span");
 const textModal = document.querySelector(".modal_win_container .modal p");
 const version = localStorage.getItem("version");
 
-const pathToOurPhotosVersion = `../images/${version}`;
+const pathToOurPhotosVersion = "../images";
 
 document.querySelector(
   "main"
-).style.backgroundImage = `url(../images/${version}/foto_background.png)`;
+).style.backgroundImage = `url(../images/foto_${version}_background.png)`;
 
 const ourPhotos = [];
 
 for (let i = 1; i <= 10; i++) {
-  ourPhotos.push(`foto_${i}.jpeg`);
+  ourPhotos.push(`foto_${version}_${i}.jpeg`);
 }
 
 const createElement = (tag, className) => {
@@ -108,7 +108,7 @@ const loadGame = () => {
 
   Array.from(document.querySelectorAll(".back")).map(
     (card) =>
-      (card.style.backgroundImage = `url(../images/${version}/foto_base.jpeg)`)
+      (card.style.backgroundImage = `url(../images/foto_${version}_base.jpeg)`)
   );
 };
 
