@@ -123,6 +123,17 @@ header {
   top: 60px;
 }
 
+.reset_button {
+  display: none;
+  background-color: var(--background-color);
+  font-size: var(--font-size-lg);
+  color: #fff;
+  padding: var(--padding-primary);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  //max-width: var(--element-max-width-sm);
+}
+
 @media screen and (max-width: 700px) {
   header,
   .modal_win_container .modal p {

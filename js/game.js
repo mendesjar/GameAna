@@ -1,7 +1,8 @@
 const grid = document.querySelector(".grid");
-const nickMoamor = document.querySelector(".nick_moamor");
+const nickName = document.querySelector(".nick_name");
 const timer = document.querySelector(".timer");
 const modal = document.querySelector(".modal_win_container");
+const resetButton = document.querySelector(".reset_button");
 const closeModal = document.querySelector(".modal_win_container span");
 const textModal = document.querySelector(".modal_win_container .modal p");
 const version = localStorage.getItem("version");
@@ -10,7 +11,7 @@ const pathToOurPhotosVersion = "../images";
 
 document.querySelector(
   "main"
-).style.backgroundImage = `url(../images/foto_${version}_background.png)`;
+).style.backgroundImage = `url(${pathToOurPhotosVersion}/foto_${version}_background.png)`;
 
 const ourPhotos = [];
 
@@ -33,12 +34,15 @@ const checkEndGame = () => {
 
   if (disabledCards.length >= ourPhotos.length * 2) {
     clearInterval(this.timer);
+    resetButton.style.display = "block";
     textModal.innerHTML = `Parabéns, Amor! Você Ganhou! Seu tempo foi de ${timer.innerHTML}s!`;
     modal.classList.add("show");
   }
 };
 
 closeModal.addEventListener("click", () => modal.classList.remove("show"));
+
+resetButton.addEventListener("click", () => resetGame());
 
 const checkCards = () => {
   const firstPhoto = firstCard.dataset.photo;
@@ -96,6 +100,7 @@ const createCard = (photo) => {
 };
 
 const loadGame = () => {
+  grid.innerHTML = "";
   const duplicatedPhotos = [...ourPhotos, ...ourPhotos];
 
   const shuffledPhotos = duplicatedPhotos.sort(() => Math.random() - 0.5);
@@ -120,9 +125,16 @@ const startTimer = () => {
   }, 1000);
 };
 
+const resetGame = () => {
+  clearInterval(this.timer);
+  timer.innerHTML = "00";
+  loadGame();
+  startTimer();
+};
+
 window.onload = () => {
-  if (localStorage.getItem("nick_moamor")) {
-    nickMoamor.innerHTML = localStorage.getItem("nick_moamor");
+  if (localStorage.getItem("nick_name")) {
+    nickName.innerHTML = localStorage.getItem("nick_name");
     loadGame();
     startTimer();
   } else {
