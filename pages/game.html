@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="icon" href="../images/brain.png" />
 
@@ -19,7 +19,7 @@
       class="w-screen h-dvh flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat text-sm p-5 md:p-6"
     >
       <header
-        class="flex justify-between items-center min-h-20 px-6 py-5 w-full lg:w-[40%] bg-rose-200/50 backdrop-blur-[5px] rounded-4xl text-white"
+        class="flex justify-between items-center min-h-20 px-6 py-5 w-full lg:w-[40%] bg-rose-200/50 backdrop-blur-[5px] rounded-[2rem] text-white"
       >
         <span class="nick_name"></span>
         <span>Tempo: <span class="timer">00</span></span>
@@ -31,7 +31,7 @@
       </header>
 
       <div
-        class="container-images grid grid-cols-4 lg:grid-cols-5 pt-5 gap-2 lg:gap-5 mx-auto max-h-dvh h-full"
+        class="container-images grid grid-cols-[repeat(4,_minmax(96px,_1fr))] lg:grid-cols-[repeat(5,_minmax(114px,_1fr))] pt-5 gap-2 lg:gap-5 mx-auto max-h-dvh h-full"
       ></div>
     </main>
 

@@ -84,9 +84,9 @@ const revealCard = ({ target }) => {
 };
 
 const createCard = (photo) => {
-  const card = createElement("div", "card rounded-2xl");
-  const front = createElement("div", "face front rounded-2xl");
-  const back = createElement("div", "face back rounded-2xl");
+  const card = createElement("div", "card rounded-[1rem]");
+  const front = createElement("div", "face front rounded-[1rem]");
+  const back = createElement("div", "face back rounded-[1rem]");
 
   front.style.backgroundImage = `url(${pathToOurPhotosVersion}/${photo})`;
 
@@ -112,7 +112,7 @@ const loadGame = () => {
   });
 
   Array.from(document.querySelectorAll(".back")).map((card) => {
-    card.className = "face back rounded-2xl bg-rose-400";
+    card.className = "face back rounded-[1rem] bg-rose-400";
     card.style.backgroundImage = `url(../images/foto_base.jpeg)`;
   });
 };
