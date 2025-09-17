@@ -5,13 +5,13 @@ const version = document.getElementById("version");
 
 const handleSubmitForm = (e) => {
   e.preventDefault();
-
   const ver = [...version.elements].filter((input) => input.checked)[0];
 
   localStorage.setItem("nick_name", input.value);
   localStorage.setItem("version", ver?.value || "V1");
 
   window.location = "pages/game.html";
+  input.value = "";
 };
 
 const handleInputChange = ({ target }) => {

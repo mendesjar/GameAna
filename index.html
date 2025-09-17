@@ -4,51 +4,65 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"
+    />
 
     <link rel="icon" href="./images/brain.png" />
-
     <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/login.css" />
+    <!-- <link rel="stylesheet" href="./css/login.css" /> -->
     <script src="./js/login.js" defer></script>
-
     <title>Jogo da memória pra Ana Claudinha | Login</title>
   </head>
   <body>
-    <form class="login_form">
-      <div class="login_header">
-        <img src="./images/brain.png" alt="Brain Icon" />
-        <h1>Jogo da memória pra Ana Claudinha</h1>
-      </div>
-      <div>
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            column-gap: 6px;
-          "
-        >
-          <input
-            spellcheck="false"
-            type="text"
-            placeholder="Seu Nick, Amor..."
-            class="login_input"
-          />
-          <div>
+    <div class="login_header w-screen h-dvh bg-slate-100">
+      <form
+        class="login_form w-full h-full text-center flex flex-col align-items justify-center p-10 gap-y-5"
+      >
+        <div class="flex flex-col justify-center place-items-center">
+          <img src="./images/brain.png" alt="Brain Icon" class="w-20" />
+          <h1>Jogo da memória pra Ana Claudinha</h1>
+        </div>
+        <div>
+          <div class="flex gap-x-5 mb-4">
+            <input
+              spellcheck="false"
+              type="text"
+              placeholder="Seu Nick, Amor..."
+              class="login_input col-span-2 text-md border-2 border-black p-3 w-full rounded-xl"
+            />
             <form>
-              <fieldset id="version" >
-                <div style="display: flex; column-gap: 6px">
+              <fieldset id="version">
+                <div class="flex gap-x-2">
                   <input type="radio" name="version" value="V1" checked />V1
                 </div>
-                <div style="display: flex; column-gap: 6px">
+                <div class="flex gap-x-2">
                   <input type="radio" name="version" value="V2" />V2
                 </div>
               </fieldset>
             </form>
           </div>
+          <div class="grid grid-cols-4 gap-x-2">
+            <button
+              disabled
+              type="submit"
+              class="login_button rounded-xl py-4 col-span-3 w-full text-white bg-rose-400 disabled:bg-slate-200 enabled:hover:cursor-pointer"
+            >
+              JOGAR
+            </button>
+            <button
+              disabled
+              class="rounded-xl py-4 col-span-1 w-full bg-rose-300 disabled:bg-slate-200 enabled:hover:cursor-pointer"
+              type="button"
+            >
+              <i class="ph-bold ph-clock-counter-clockwise text-xl"></i>
+            </button>
+          </div>
         </div>
-        <button type="submit" class="login_button" disabled>Jogar</button>
-      </div>
-    </form>
+      </form>
+    </div>
   </body>
 </html>

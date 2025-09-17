@@ -1,4 +1,4 @@
-const grid = document.querySelector(".grid");
+const grid = document.querySelector(".container-images");
 const nickName = document.querySelector(".nick_name");
 const timer = document.querySelector(".timer");
 const modal = document.querySelector(".modal_win_container");
@@ -84,9 +84,9 @@ const revealCard = ({ target }) => {
 };
 
 const createCard = (photo) => {
-  const card = createElement("div", "card");
-  const front = createElement("div", "face front");
-  const back = createElement("div", "face back");
+  const card = createElement("div", "card rounded-2xl");
+  const front = createElement("div", "face front rounded-2xl");
+  const back = createElement("div", "face back rounded-2xl");
 
   front.style.backgroundImage = `url(${pathToOurPhotosVersion}/${photo})`;
 
@@ -111,10 +111,10 @@ const loadGame = () => {
     grid.appendChild(card);
   });
 
-  Array.from(document.querySelectorAll(".back")).map(
-    (card) =>
-      (card.style.backgroundImage = `url(../images/foto_${version}_base.jpeg)`)
-  );
+  Array.from(document.querySelectorAll(".back")).map((card) => {
+    card.className = "face back rounded-2xl bg-rose-400";
+    card.style.backgroundImage = `url(../images/foto_base.jpeg)`;
+  });
 };
 
 const startTimer = () => {
